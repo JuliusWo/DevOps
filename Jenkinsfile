@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage('Checkout code') {
             steps {
-                git 'https://github.com/JuliusWo/DevOps.git'
+                withCredentials([usernamePassword(credentialsId: 'my_git_credentials', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                    git url: 'https://github.com/JuliusWo/DevOps.git', branch: 'main', credentialsId: 'GitHub_Cred'
+                }
             }
         }
         stage('Build Docker image') {
