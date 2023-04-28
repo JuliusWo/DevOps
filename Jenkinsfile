@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout code') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'my_git_credentials', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'GitHub_Cred', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                     git url: 'https://github.com/JuliusWo/DevOps.git', branch: 'main', credentialsId: 'GitHub_Cred'
                 }
             }
